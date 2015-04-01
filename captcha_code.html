@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <style>
+     
+        #textCanvas {
+            background-color:#C8E2F4;
+            color:black;
+            border:2px solid;
+            height:55px;
+            width:75px
+        }
+    </style>
+</head>
+<body>
+    <form name="randform">
+<input type="button" value="Create Random String" id="btn">&nbsp;
+<input type="text" id="txt" name="randomfield" value="">
+      
+        <input id="cap" type="hidden" />
+        <canvas id='textCanvas' height=20 visible="false"></canvas>
+
+</form>
+  
+    <script>
+        $(document).ready(function () {
+            var tCtx = document.getElementById('textCanvas').getContext('2d'),
+  imageElem = document.getElementById('image');
+            var chars = "0123456789";
+            var string_length = 4;
+            var randomstring = '';
+            for (var i = 0; i < string_length; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                randomstring += chars.substring(rnum, rnum + 1);
+            }
+            $("#cap").val(randomstring);
+            tCtx.canvas.width = tCtx.measureText(randomstring).width;
+            tCtx.fillText(randomstring, 0, 15);
+            imageElem.src = tCtx.canvas.toDataURL();
+            console.log(imageElem.src);
+
+        });      
+    </script>
+    <script>
+        $("#btn").click(function () {
+            var a = document.getElementById('txt').value;
+            var b = document.getElementById('cap').value;
+
+            if (a == b) {
+                alert("right");
+            }
+            else {
+                alert("wrong");
+            }
+        });
+    </script>
+
+
+
+</body>
+</html>
