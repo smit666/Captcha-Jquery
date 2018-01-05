@@ -26,8 +26,8 @@
   
     <script>
         $(document).ready(function () {
-            var tCtx = document.getElementById('textCanvas').getContext('2d'),
-  imageElem = document.getElementById('image');
+            var tCtx = $('#textCanvas').getContext('2d'),
+  imageElem = $('#image');
             var chars = "0123456789";
             var string_length = 4;
             var randomstring = '';
@@ -45,8 +45,8 @@
     </script>
     <script>
         $("#btn").click(function () {
-            var a = document.getElementById('txt').value;
-            var b = document.getElementById('cap').value;
+            var a = $('#txt').val();
+            var b = $('#cap').val();
 
             if (a == b) {
                 alert("right");
